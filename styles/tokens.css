@@ -1,0 +1,72 @@
+/*
+ * SIGNAL — design tokens.
+ * ~70% dark, ~10% glow. Glow = meaning, never decoration.
+ * Every token here becomes a Tailwind utility (bg-abyss, text-cyan, font-display, ease-enter...).
+ */
+
+@theme {
+  /* Palette is closed: wipe Tailwind's defaults so only SIGNAL colours exist. */
+  --color-*: initial;
+
+  /* Depths */
+  --color-abyss: #04070d;
+  --color-navy: #0a1322;
+  --color-trench: #101b2e;
+
+  /* Signals */
+  --color-cyan: #3df5d6;
+  --color-violet: #8b5cff;
+  --color-amber: #ffb547;
+  /* Scene-only accent for GREEN ATM (Chapter III). Not part of the global glow language. */
+  --color-leaf: #52f2a0;
+
+  /* Light */
+  --color-mist: #e8f1f5;
+  --color-fog: #8a9bb0;
+
+  /* Easing — CSS mirrors of the GSAP motion language (lib/gsap.ts) */
+  --ease-enter: cubic-bezier(0.215, 0.61, 0.355, 1); /* power3.out */
+  --ease-move: cubic-bezier(0.455, 0.03, 0.515, 0.955); /* power2.inOut */
+  --ease-hero: cubic-bezier(0.19, 1, 0.22, 1); /* expo.out */
+
+  /* Fluid type scale */
+  --text-hero: clamp(3rem, 10.5vw, 11.5rem);
+  --text-hero--line-height: 0.9;
+  --text-hero--letter-spacing: -0.04em;
+  --text-display: clamp(2.5rem, 7vw, 7.5rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.035em;
+  --text-title: clamp(1.75rem, 3.6vw, 3.25rem);
+  --text-title--line-height: 1.05;
+  --text-title--letter-spacing: -0.02em;
+  --text-lead: clamp(1.125rem, 1.7vw, 1.5rem);
+  --text-lead--line-height: 1.5;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1;
+  --text-label--letter-spacing: 0.18em;
+}
+
+/* Font families resolve to next/font CSS variables at runtime, hence `inline`. */
+@theme inline {
+  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+:root {
+  /* Glows (static only — never animate filter/box-shadow; fade a pre-glowed layer's opacity instead) */
+  --glow-cyan: 0 0 0.5rem rgb(61 245 214 / 0.55), 0 0 2rem rgb(61 245 214 / 0.25);
+  --glow-violet: 0 0 0.5rem rgb(139 92 255 / 0.55), 0 0 2rem rgb(139 92 255 / 0.25);
+  --glow-amber: 0 0 0.5rem rgb(255 181 71 / 0.55), 0 0 2rem rgb(255 181 71 / 0.25);
+
+  /* Layout */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem); /* also the spine's lane */
+  --max-w: 90rem;
+
+  /* Z layers */
+  --z-spine: 10;
+  --z-nav: 40;
+  --z-cursor: 90;
+  --z-preloader: 100;
+}
